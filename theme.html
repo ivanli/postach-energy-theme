@@ -126,7 +126,7 @@
               
 							<span class="continue-reading"><a href="{{ post.permalink }}">Continue reading...</a></span>
 							<footer class="post-social">
-								<span class="date-holder"><a href="#">{{ post.created_at|format_date }}</a> by <a href="#">Ivan</a></span>
+								<span class="date-holder">{{ post.created_at|format_date }} by {{ site.author }}</span>
 								<ul class="social-networks list-inline-style">
                   {% if site.twitter %}<li><a href="{{ site.twitter }}"><i class="fa fa-twitter"></i></a></li>{% endif %}
                   {% if site.facebook %}<li><a href="{{ site.facebook }}"><i class="fa fa-facebook"></i></a></li>{% endif %}
@@ -159,7 +159,7 @@
 							<header class="main-heading">
                 {% if post.tags %}
                 <strong class="post-title"><span class="txt">
-                  {% for tag in post.tags %}<a href="/tag/{{ tag }}">{{ tag }}</a>{% endfor %}
+                  {% for tag in post.tags %}<a href="/tag/{{ tag }}">{{ tag }}</a>{% if not loop.last %} , {% endif %}{% endfor %}
                 </span></strong>
                 {% endif %}
 								<h2><a href="#">{{ post.title }}</a></h2>
@@ -176,7 +176,7 @@
               {% endif %}
               
 							<footer class="post-social post">
-								<span class="date-holder"><a href="#">{{ post.created_at|format_date }}</a> by <a href="#">Ivan Li</a></span>
+								<span class="date-holder">{{ post.created_at|format_date }} by {{ site.author }}</span>
 							</footer>
               
 							<div class="author-info">
@@ -281,13 +281,6 @@
               <!--End mc_embed_signup-->
               
 						</section>
-
-                        
-            <ul class="tags">
-              {% for tag in site.tags %}
-                <li><a href="/tag/{{ tag.name }}">#{{ tag.name }}</a></li>
-              {% endfor %}
-            </ul>
             
             {% if site.tags %}
             
