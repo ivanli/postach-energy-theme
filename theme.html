@@ -115,7 +115,7 @@
 								<strong class="post-title">
                   {% if post.tags %}
                   <span class="txt">
-                  {% for tag in post.tags %}<a href="/tag/{{ tag }}">{{ tag }}</a>{% endfor %}
+                  {% for tag in post.tags %}<a href="/tag/{{ tag }}">{{ tag }}</a>{% if not loop.last %} , {% endif %}{% endfor %}
                   </span>
                   {% endif %}
                 </strong>
@@ -144,8 +144,8 @@
             {% if pagination %}
             <nav class="pagination-nav">
 							<ul class="pagination list-inline-style">
-								<li><a href="{{ pagination.prev }}"><<</a></li>
-								<li><a href="{{ pagination.next }}">>></a></li>
+								{% if pagination.prev %}<li><a href="{{ pagination.prev }}"><<</a></li>{% endif %}
+								{% if pagination.next %}<li><a href="{{ pagination.next }}">>></a></li>{% endif %}
 							</ul>
 						</nav>
             {% endif %}
