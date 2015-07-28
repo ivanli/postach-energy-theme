@@ -6,12 +6,11 @@
 	<!-- set the viewport width and initial-scale on mobile devices -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
-    {% if is_login %}Login
-    {% elif is_home %}{{ site.author }}
-    {% elif is_tag %}{{ tag }}
-    {% elif post %}{{ post.title }}
+    {% if is_login %}Login | {{ site.name }}
+    {% elif is_home %}{{ site.name }} | Blog on Clean Technology
+    {% elif is_tag %}{{ tag }} | {{ site.name }}
+    {% elif post %}{{ post.title }} | {{ site.name }}
     {% endif %}
-    | {{ site.name }}
   </title>
   
   {{ header_meta }}
@@ -126,7 +125,7 @@
               
 							<span class="continue-reading"><a href="{{ post.permalink }}">Continue reading...</a></span>
 							<footer class="post-social">
-								<span class="date-holder">{{ post.created_at|format_date }} by {{ site.author }}</span>
+								<span class="date-holder">{{ post.created_at|format_date }} by <a href="//about.me/ivanky.li">Ivan</a></span>
 								<ul class="social-networks list-inline-style">
                   {% if site.twitter %}<li><a href="{{ site.twitter }}"><i class="fa fa-twitter"></i></a></li>{% endif %}
                   {% if site.facebook %}<li><a href="{{ site.facebook }}"><i class="fa fa-facebook"></i></a></li>{% endif %}
@@ -176,26 +175,24 @@
               {% endif %}
               
 							<footer class="post-social post">
-								<span class="date-holder">{{ post.created_at|format_date }} by {{ site.author }}</span>
+								<span class="date-holder">{{ post.created_at|format_date }} by <a href="//about.me/ivanky.li">Ivan</a></span>
 							</footer>
               
               <div class="author-info">
 								<div class="alignleft">
-									<a href="#">
-										<!-- picturefill html structure example -->
-										<span data-picture data-alt="image description">
-											<span data-src="{{ site.avatar }}" data-height="100" data-width="100"></span>
-											<span data-src="{{ site.avatar }}" data-height="100" data-width="100" data-media="(-webkit-min-device-pixel-ratio:1.5), (min-resolution:1.5dppx)" ></span> <!-- retina 2x desktop -->
-											<!--[if (lt IE 9) & (!IEMobile)]>
-												<span data-src="{{ site.avatar }}"></span>
-											<![endif]-->
-											<!-- Fallback content for non-JS browsers. Same img src as the initial, unqualified source element. -->
-											<noscript><img src="{{ site.avatar }}" width="100" height="100"></noscript>
-										</span>
-									</a>
+                  <!-- picturefill html structure example -->
+                  <span data-picture data-alt="image description">
+                    <span data-src="{{ site.avatar }}" data-height="100" data-width="100"></span>
+                    <span data-src="{{ site.avatar }}" data-height="100" data-width="100" data-media="(-webkit-min-device-pixel-ratio:1.5), (min-resolution:1.5dppx)" ></span> <!-- retina 2x desktop -->
+                    <!--[if (lt IE 9) & (!IEMobile)]>
+                      <span data-src="{{ site.avatar }}"></span>
+                    <![endif]-->
+                    <!-- Fallback content for non-JS browsers. Same img src as the initial, unqualified source element. -->
+                    <noscript><img src="{{ site.avatar }}" width="100" height="100"></noscript>
+                  </span>
 								</div>
 								<div class="author-txt">
-									<h2><a href="#">Written by {{ site.author }}</a></h2>
+									<h2><a href="//about.me/ivanky.li">Written by {{ site.author }}</a></h2>
 									<p>{{ site.bio }}</p>
 								</div>
 							</div>
