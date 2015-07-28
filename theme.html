@@ -75,21 +75,11 @@
 					<div class="medium-4 small-8 columns social-area">
 						<!-- social-networks of the page -->
 						<ul class="social-networks list-inline-style">
-              {% if site.twitter %}
-							<li><a href="{{ site.twitter }}"><i class="fa fa-twitter"></i></a></li>
-              {% endif %}
-              {% if site.facebook %}
-							<li><a href="{{ site.facebook }}"><i class="fa fa-facebook"></i></a></li>
-              {% endif %}
-              {% if site.googleplus %}
-							<li><a href="{{ site.googleplus }}"><i class="fa fa-google-plus"></i></a></li>
-              {% endif %}
-              {% if site.linkedin %}
-							<li><a href="{{ site.linkedin }}"><i class="fa fa-linkedin"></i></a></li>
-              {% endif %}
-              {% if site.facebook %}
-							<li><a href="{{ site.facebook }}"><i class="fa fa-facebook"></i></a></li>
-              {% endif %}
+              {% if site.twitter %}<li><a href="{{ site.twitter }}"><i class="fa fa-twitter"></i></a></li>{% endif %}
+              {% if site.facebook %}<li><a href="{{ site.facebook }}"><i class="fa fa-facebook"></i></a></li>{% endif %}
+              {% if site.googleplus %}<li><a href="{{ site.googleplus }}"><i class="fa fa-google-plus"></i></a></li>{% endif %}
+              {% if site.linkedin %}<li><a href="{{ site.linkedin }}"><i class="fa fa-linkedin"></i></a></li>{% endif %}
+              {% if site.facebook %}<li><a href="{{ site.facebook }}"><i class="fa fa-facebook"></i></a></li>{% endif %}
 							<li><a href="{{ site.atom_url }}"><i class="fa fa-rss"></i></a></li>
 						</ul>
 					</div>
@@ -111,15 +101,78 @@
           
             {% if is_home or is_tag %}
             
+            {% if is_tag %}
+            <article class="posts-blog quotes">
+							<h1>Tagged: {{ tag }}</h1>
+						</article>
+            {% endif %}
+            
+            {% if posts %}
+            {% for post in posts %}
+          
+            <article class="posts-blog">
+							<header class="main-heading">
+								<strong class="post-title"><span class="txt">
+                  {% for tag in post.tags %}<a href="/tag/{{ tag }}">{{ tag }}</a>{% endfor %}
+                </span></strong>
+								<h2><a href="{{ post.permalink }}">{{ post.title }}</a></h2>
+							</header>
+              
+              {% if post.photos %}{% for photo in post.photos %}{% if loop.index == 1 %}
+							<div class="post-img">
+								<a href="{{ post.permalink }}">
+									<!-- picturefill html structure example -->
+									<span data-picture>
+										<span data-src="{{ photo.width_600 }}" data-width="600"></span>
+										<!--<span data-src="http://placehold.it/1600x818" data-height="409" data-width="800" data-media="(-webkit-min-device-pixel-ratio:1.5), (min-resolution:1.5dppx)" ></span>--> <!-- retina 2x desktop -->
+										<!--[if (lt IE 9) & (!IEMobile)]>
+											<span data-src="http://placehold.it/800x409"></span>
+										<![endif]-->
+										<!-- Fallback content for non-JS browsers. Same img src as the initial, unqualified source element. -->
+										<noscript><img src="{{ photo.width_600 }}" height="600"></noscript>
+									</span>
+								</a>
+							</div>
+              {% endif %}{% endfor %}{% endif %}
+              
+              {{ post.content }}
+              
+							<span class="continue-reading"><a href="{{ post.permalink }}">Continue reading...</a></span>
+							<footer class="post-social">
+								<span class="date-holder"><a href="#">{{ post.created_at|format_date }}</a> by <a href="#">Ivan</a></span>
+								<ul class="social-networks list-inline-style">
+                  {% if site.twitter %}<li><a href="{{ site.twitter }}"><i class="fa fa-twitter"></i></a></li>{% endif %}
+                  {% if site.facebook %}<li><a href="{{ site.facebook }}"><i class="fa fa-facebook"></i></a></li>{% endif %}
+                  {% if site.googleplus %}<li><a href="{{ site.googleplus }}"><i class="fa fa-google-plus"></i></a></li>{% endif %}
+                  {% if site.linkedin %}<li><a href="{{ site.linkedin }}"><i class="fa fa-linkedin"></i></a></li>{% endif %}
+                  {% if site.facebook %}<li><a href="{{ site.facebook }}"><i class="fa fa-facebook"></i></a></li>{% endif %}
+                  <li><a href="{{ site.atom_url }}"><i class="fa fa-rss"></i></a></li>
+								</ul>
+							</footer>
+						</article>
+            
+            {% endfor %}
+            
+            {% if not is_tag %}
+            {% if pagination %}
+            <nav class="pagination-nav">
+							<ul class="pagination list-inline-style">
+								<li><a href="{{ pagination.prev }}"><<</a></li>
+								<li><a href="{{ pagination.next }}">>></a></li>
+							</ul>
+						</nav>
+            {% endif %}
+            {% endif %}
+            
+            {% endif %}
+            
             {% elif is_post %}
             
             <article class="posts-blog">
 							<header class="main-heading">
                 {% if post.tags %}
                 <strong class="post-title"><span class="txt">
-                  {% for tag in post.tags %}
-								  <a href="/tag/{{ tag }}">{{ tag }}</a>  
-                  {% endfor %}
+                  {% for tag in post.tags %}<a href="/tag/{{ tag }}">{{ tag }}</a>{% endfor %}
                 </span></strong>
                 {% endif %}
 								<h2><a href="#">{{ post.title }}</a></h2>
@@ -208,21 +261,11 @@
             
 						<section class="widget social-widget">
 							<ul class="social-networks list-inline-style">
-								{% if site.twitter %}
-                <li><a href="{{ site.twitter }}"><i class="fa fa-twitter"></i></a></li>
-                {% endif %}
-                {% if site.facebook %}
-                <li><a href="{{ site.facebook }}"><i class="fa fa-facebook"></i></a></li>
-                {% endif %}
-                {% if site.googleplus %}
-                <li><a href="{{ site.googleplus }}"><i class="fa fa-google-plus"></i></a></li>
-                {% endif %}
-                {% if site.linkedin %}
-                <li><a href="{{ site.linkedin }}"><i class="fa fa-linkedin"></i></a></li>
-                {% endif %}
-                {% if site.facebook %}
-                <li><a href="{{ site.facebook }}"><i class="fa fa-facebook"></i></a></li>
-                {% endif %}
+                {% if site.twitter %}<li><a href="{{ site.twitter }}"><i class="fa fa-twitter"></i></a></li>{% endif %}
+                {% if site.facebook %}<li><a href="{{ site.facebook }}"><i class="fa fa-facebook"></i></a></li>{% endif %}
+                {% if site.googleplus %}<li><a href="{{ site.googleplus }}"><i class="fa fa-google-plus"></i></a></li>{% endif %}
+                {% if site.linkedin %}<li><a href="{{ site.linkedin }}"><i class="fa fa-linkedin"></i></a></li>{% endif %}
+                {% if site.facebook %}<li><a href="{{ site.facebook }}"><i class="fa fa-facebook"></i></a></li>{% endif %}
                 <li><a href="{{ site.atom_url }}"><i class="fa fa-rss"></i></a></li>
 							</ul>
 						</section>
