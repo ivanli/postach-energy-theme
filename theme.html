@@ -12,13 +12,13 @@
     {% elif post %}{{ post.title }} | {{ site.name }}
     {% endif %}
   </title>
-  
+
   {{ header_meta }}
-  
+
   <!--[if IE 7]>
   <link href="http://postach.io/static/themes/_assets/fontawesome/css/font-awesome-ie7.min.css" rel="stylesheet">
   <![endif]-->
-  
+
 	<!-- include Google Fonts  -->
 	<link type="text/css" rel="stylesheet" media="all" href="http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic%7cOswald:400,300%7cRaleway:400,300,500,600,700">
 	<!-- include the fancybox stylesheet -->
@@ -26,7 +26,7 @@
 	<!-- include the Zurb stylesheet -->
 	<link type="text/css" rel="stylesheet" media="all" href="{{ assets('css/app.css') }}">
 	<script src="{{ assets('js/modernizr/modernizr.js') }}"></script>
-  
+
   {% if site.analytics %}
     <script>
     var _gaq = _gaq || [];
@@ -39,7 +39,7 @@
     })();
     </script>
   {% endif %}
-  
+
 </head>
 <body>
   {% if is_login %}
@@ -61,12 +61,32 @@
               </a>
               <div class="nav-section">
                 <ul class="list-inline-style">
-                  <li><a href="/">HOME</a></li>
-                  {% if pages %}
-                  {% for page in pages %}
-                  <li><a href="{{ page.permalink }}" class="{{ set_active(page.permalink) }}">{{ page.title }}</a></li>
-                  {% endfor %}
-                  {% endif %}
+									<li><a href="/page/start-here">START HERE</a></li>
+									<li>
+										<a href="/page/electric-vehicles">Electric Vehicles</a>
+										<ul class="list-inline-style">
+											<li><a href="/tag/formula-e">Formula E</a></li>
+										  <li><a href="/tag/electric-trucks">Electric Trucks</a></li>
+											<li><a href="/tag/smarter-transport">Smarter Transport</a></li>
+										</ul>
+									</li>
+									<li>
+										<a href="/page/electric-vehicles">Intelligent Buildings</a>
+										<ul class="list-inline-style">
+											<li><a href="/tag/iot">Internet of Things</a></li>
+										  <li><a href="/tag/smart-homes">Smart Homes</a></li>
+											<li><a href="/tag/commercial-buildings">Commercial Buildings</a></li>
+											<li><a href="/tag/new-construction">New Construction Techniques</a></li>
+										</ul>
+									</li>
+									<li>
+										<a href="/page/electric-vehicles">Solar & Wind</a>
+										<ul class="list-inline-style">
+											<li><a href="/tag/formula-e">Solar</a></li>
+										  <li><a href="/tag/formula-e">Wind</a></li>
+										</ul>
+									</li>
+                  <li><a href="/">EVERYTHING</a></li>
                 </ul>
               </div>
             </nav>
@@ -97,18 +117,18 @@
 				<div class="row twocolumns">
 					<!-- posts-holder of the page -->
 					<section class="medium-8 large-9 small-12 columns posts-holder">
-          
+
             {% if is_home or is_tag %}
-            
+
             {% if is_tag %}
             <article class="posts-blog">
 							<h1>Tagged: {{ tag }}</h1>
 						</article>
             {% endif %}
-            
+
             {% if posts %}
             {% for post in posts %}
-          
+
             <article class="posts-blog">
 							<header class="main-heading">
 								<strong class="post-title">
@@ -120,9 +140,9 @@
                 </strong>
 								<h2><a href="{{ post.permalink }}">{{ post.title }}</a></h2>
 							</header>
-              
+
               {{ post.content }}
-              
+
 							<span class="continue-reading"><a href="{{ post.permalink }}">Continue reading...</a></span>
 							<footer class="post-social">
 								<span class="date-holder">{{ post.created_at|format_date }} by <a href="//about.me/ivanky.li">Ivan</a></span>
@@ -136,9 +156,9 @@
 								</ul>
 							</footer>
 						</article>
-            
+
             {% endfor %}
-            
+
             {% if not is_tag %}
             {% if pagination %}
             <nav class="pagination-nav">
@@ -149,11 +169,11 @@
 						</nav>
             {% endif %}
             {% endif %}
-            
+
             {% endif %}
-            
+
             {% elif is_post %}
-            
+
             <article class="posts-blog">
 							<header class="main-heading">
                 {% if post.tags %}
@@ -163,9 +183,9 @@
                 {% endif %}
 								<h2><a href="#">{{ post.title }}</a></h2>
 							</header>
-							
+
 							{{ post.content }}
-              
+
               {% if post.tags %}
               <ul class="meta-tags list-inline-style">
                 {% for tag in post.tags %}
@@ -173,11 +193,11 @@
                 {% endfor %}
 							</ul>
               {% endif %}
-              
+
 							<footer class="post-social post">
 								<span class="date-holder">{{ post.created_at|format_date }} by <a href="//about.me/ivanky.li">Ivan</a></span>
 							</footer>
-              
+
               <div class="author-info">
 								<div class="alignleft">
                   <!-- picturefill html structure example -->
@@ -197,11 +217,11 @@
 								</div>
 							</div>
 						</article>
-            
+
             {% elif is_link %}
-          
+
             {% elif is_page %}
-            
+
             <article class="posts-blog">
 							<header class="main-heading">
 								<h2><a href="#">{{ page.title }}</a></h2>
@@ -209,14 +229,14 @@
 							{{ page.content }}
 						</article>
 
-            {% endif %}            
-            
+            {% endif %}
+
             {% if site.disqus %}
 						<article class="posts-blog">
 							<header class="main-heading related">
 								<h2>COMMENTS</h2>
 							</header>
-							
+
 							<div class="conmments-block">
                 <div id="disqus_thread"></div>
                 <script type="text/javascript">
@@ -257,7 +277,7 @@
 							</div>
 							<p>{{ site.bio }}</p>
 						</section>
-            
+
 						<section class="widget social-widget">
 							<ul class="social-networks list-inline-style">
                 {% if site.twitter %}<li><a href="{{ site.twitter }}"><i class="fa fa-twitter"></i></a></li>{% endif %}
@@ -291,11 +311,11 @@
               </div>
               <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
               <!--End mc_embed_signup-->
-              
+
 						</section>
-            
+
             {% if site.tags %}
-            
+
 						<section class="widget tag-widget">
 							<h3>Tags</h3>
 							<div class="tagcloud">
@@ -304,7 +324,7 @@
                 {% endfor %}
 							</div>
 						</section>
-            
+
             {% endif %}
 					</aside>
 				</div>
@@ -329,11 +349,11 @@
 			</footer>
 		</div>
 	</div>
-  
+
   {% endif %}
-  
+
   {{ footer_meta }}
-  
+
 	<!-- include custom JavaScript -->
 	<script type="text/javascript" src="{{ assets('js/jquery-1.11.2.min.js') }}"></script>
 	<!-- include Zurb JavaScript -->
